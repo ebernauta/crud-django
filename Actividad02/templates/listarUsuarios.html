@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <title>Lista de usuarios</title>
+</head>
+<body>
+    <div>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand">Lista de Usuarios</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main">Actividad 01</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/agregarUsuarios">Agregar Usuario</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Rut</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Ingreso</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for Usuario in Usuarios %}
+                  <tr>
+                    <th scope="row">{{ Usuario.rut }}</th>
+                    <td>{{ Usuario.nombre }}</td>
+                    <td>{{ Usuario.email }}</td>
+                    <td>{{ Usuario.contrasena }}</td>
+                    <td>{{ Usuario.ingreso }}</td>
+                    <td> 
+                      <a href="{% url 'editarUsuarios' Usuario.rut %}" class="btn btn-info" role="button">Editar</a> 
+                      <a href="{% url 'eliminarUsuarios' Usuario.rut %}" class="btn btn-danger" role="button">Eliminar</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+</html>
