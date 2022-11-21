@@ -30,6 +30,18 @@ def editarUsuarios(request, rut):
         return redirect('listarUsuarios')
     return render(request, 'editarUsuarios.html', {'formulario':formulario})
 
+
+
+
+
+
+
+
+
+
+
+
+
 def listarUsuarios(request):
     
     Usuarios = Usuario.objects.all() #obtengo todos los usuarios
